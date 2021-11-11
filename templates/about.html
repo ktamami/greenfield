@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- メニュー -->
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light menu-container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase active" aria-current="page" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              about
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('about') }}">about me</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('aboutAroma') }}">about aroma</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('news') }}">news</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('menu') }}">menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('contact') }}">contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- タイトル -->
+  <div class="title-text">
+    <h3>ABOUT</h3>
+  </div>
+
+  <div class="introduce">
+    <p>当サロンは、AEAJアロマセラピストによるアロマトリートメントサロンです。<br />
+      なめらかなタッチのアロマトリートメントと、深部にアプローチするディープティシューマッサージを融合したトリートメントでお身体をほぐしていきます。<br />
+      デトックスしながら、心地よい香りのなかで深いリラクゼーションが得られます。<br />
+      <br />
+      千葉県浦安市の自宅にておこなっているため<br />
+      はじめての方にもくつろいでいただけるような空間作り、トリートメントをこころがけています。<br />
+      <br />
+      おためしいただきやすいコースから、全身フルコースまでさまざまなメニューをご用意おりますので<br />
+      お気軽にお問い合わせください！<br />
+      <br />
+      （アロマについて知りたいかたは<a href="aboutAroma.html">コチラ</a>）
+    </p>
+  </div>
+{% endblock %}
