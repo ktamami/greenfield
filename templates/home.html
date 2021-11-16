@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--メニューバー-->
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light menu-container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-uppercase" aria-current="page" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              about
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('about') }}">about me</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('aboutAroma') }}">about aroma</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('news') }}">news</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('menu') }}">menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('contact') }}">contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- タイトル -->
+  <div class="title-container">
+    <h1 class="title-text">Green Field</h1>
+
+  </div>
+
+
+  <!-- ニュース -->
+  <div class="info">
+    <p><span class="new">New</span>
+      <span><a class="moveto-news" href="{{ url_for('news')}}">新しい投稿</a>があります。</span>
+      <span>({{ post_time }})</span>
+    </p>
+  </div>
+
+  <!-- イメージ画像 -->
+  <div class="top-images">
+    <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../static/images/top01.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../static/images/top02.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../static/images/top03.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../static/images/top04.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <a class="carousel-control-prev carousel" href="#carousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next carousel" href="#carousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- メニュー -->
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light menu-container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              about
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('about') }}">about me</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('aboutAroma') }}">about aroma</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('news') }}">news</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase active" aria-current="page" href="{{ url_for('menu') }}">menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="{{ url_for('contact') }}">contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- タイトル -->
+  <div class="title-text">
+    <h3>MENU</h3>
+  </div>
+
+
+  <!-- トリートメントメニュー表 -->
+
+  <h4 class="category-title">ボディ</h4>
+  <div class="row category-box">
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">ボディ＆ヘッドセラピー</p>
+        <span class="menu-desc">90分　￥8,500</span>
+        <p class="menu-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor go incididunt ut labore et dolore magna aliqua. </p>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">デラックスコース</p>
+        <span class="menu-desc">120分　￥11,000</span>
+        <p class="menu-desc">さらにじっくり時間をかけて全身をケアします。</p>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">ボディ(ハーフ）</p>
+        <span class="menu-desc">35分　￥3,500</span>
+        <p class="menu-desc">ご高齢の方にもおすすめです。</p>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">延長</p>
+        <span class="menu-desc">10分　￥1,000</span>
+        <p class="menu-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor go incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="category-title">フェイシャル</h4>
+  <div class="row category-box">
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">フェイシャル</p>
+        <span class="menu-desc">50分　￥5,000</span>
+        <p class="menu-desc">クレンジング、小呂魔トリートメント、パック、整肌をオールハンドの工程で仕上げ、しっとりとしたお肌に。癒し効果の高いフェイシャルケアで血流も良くなり、むくみやくすみもすっきり。</p>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">フェイシャル＋デコルテ＋腕</p>
+        <span class="menu-desc">70分　￥7,000</span>
+        <p class="menu-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor go incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="category-title">フルコース</h4>
+  <div class="row category-box">
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">ボディ70分＋フェイシャル50分</p>
+        <span class="menu-desc">120分　￥11,500</span>
+        <p class="menu-desc">全身の結構、リンパの流れを促しバランスを整えてから、フェイシャルケアを行うことで、お肌の透明感がアップ。最高のリラクゼーションです。</p>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">ボディ90分+フェイシャル50分</p>
+        <span class="menu-desc">140分　￥13,000</span>
+        <p class="menu-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor go incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="category-title">オプション</h4>
+  <div class="row category-box">
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">ヘッドセラピー</p>
+        <span class="menu-desc">20分　￥2,000</span>
+        <p class="menu-desc">爽快感のあるアロマミストを使い、頭残りをほぐします。疲れて見える表情がすっきりとクリアに。</p>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6">
+      <div class="menu-box">
+        <p class="menu-title">ハンドマッサージ</p>
+        <span class="menu-desc">20分　￥2,000</span>
+        <p class="menu-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor go incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+  <p class="menu-box">
+    カウンセリング、お着替えなどで、コース時間の他に15分程お時間を要します。<br>
+    ボディコースには足浴がつきます。
+  </p>　
+{% endblock %}
