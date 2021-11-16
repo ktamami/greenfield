@@ -12,7 +12,6 @@ password = os.environ.get("PASS")
 address = os.environ.get("MAIL_TO")
 charset = "iso-2022-jp"
 
-
 app = Flask(__name__)
 current_year = datetime.datetime.now().year
 current_date = str(datetime.datetime.today()).split(" ")[0]
@@ -29,7 +28,6 @@ post_time = str(datetime.datetime.fromtimestamp(timestamp).date()).replace("-", 
 @app.route("/")
 def home():
     return render_template("home.html", current_year=current_year, post_time=post_time)
-    # htmlとかは、"templates"というタイトルのフォルダに入れないとダメ!
 
 @app.route("/about")
 def about():
@@ -105,4 +103,4 @@ def failed():
     return render_template("failed.html", current_year=current_year)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
