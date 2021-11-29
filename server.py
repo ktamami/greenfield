@@ -20,30 +20,37 @@ min_date = str(today + datetime.timedelta(2)).split(" ")[0]
 max_date = str(today + datetime.timedelta(32)).split(" ")[0]
 
 insta_data = "static/insta.txt"
-with open(insta_data, mode="r") as file:
+with open(insta_data, mode="r", encoding='shift_jis') as file:
     latest_code = file.read()
 timestamp = os.path.getmtime(insta_data)
-post_time = str(datetime.datetime.fromtimestamp(timestamp).date()).replace("-", ".")
+post_time = str(datetime.datetime.fromtimestamp(
+    timestamp).date()).replace("-", ".")
+
 
 @app.route("/")
 def home():
     return render_template("home.html", current_year=current_year, post_time=post_time)
 
+
 @app.route("/about")
 def about():
     return render_template("about.html", current_year=current_year)
+
 
 @app.route("/aboutaroma")
 def aboutAroma():
     return render_template("aboutAroma.html", current_year=current_year)
 
+
 @app.route("/news")
 def news():
     return render_template("news.html", current_year=current_year, latest_code=latest_code)
 
+
 @app.route("/menu")
 def menu():
     return render_template("menu.html", current_year=current_year)
+
 
 @app.route("/contact")
 def contact():
@@ -54,6 +61,7 @@ def contact():
         min_date=min_date,
         max_date=max_date
     )
+
 
 @app.route("/completed", methods=["POST"])
 def completed():
@@ -77,11 +85,13 @@ def completed():
                           f"お時間：　　　　{appointtime}\n"
                           f"メッセージ：　　{appointmessage}",
                           "plain", charset)
-        my_msg['Subject'] = Header(f"【{whatfor}】GreenFieldに新規メッセージ({current_date})", charset)
+        my_msg['Subject'] = Header(
+            f"【{whatfor}】GreenFieldに新規メッセージ({current_date})", charset)
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(user=my_email, password=password)
-            connection.sendmail(from_addr=my_email, to_addrs=address, msg=my_msg.as_string())
+            connection.sendmail(from_addr=my_email,
+                                to_addrs=address, msg=my_msg.as_string())
 
         return render_template(
             "completed.html",
@@ -98,9 +108,11 @@ def completed():
     except:
         failed()
 
+
 @app.route("/failed")
 def failed():
     return render_template("failed.html", current_year=current_year)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
