@@ -5,7 +5,6 @@ from email.mime.text import MIMEText
 from email.header import Header
 import os
 from dotenv import load_dotenv
-import insta_operation
 load_dotenv()
 
 my_email = os.environ.get("MAIL_FROM")
@@ -20,20 +19,13 @@ today = datetime.datetime.today()
 min_date = str(today + datetime.timedelta(2)).split(" ")[0]
 max_date = str(today + datetime.timedelta(32)).split(" ")[0]
 
-driver_path = '/app/.chromedriver/bin/chromedriver'
-bot = insta_operation.InstaOperation(driver_path)
-bot.login()
-bot.find_target()
-latest_code = bot.get_latest_post()
-bot.overlay_code(latest_code)
-bot.quit()
-
 insta_data = "static/insta.txt"
 with open(insta_data, mode="r", encoding='shift_jis') as file:
     latest_code = file.read()
 timestamp = os.path.getmtime(insta_data)
 post_time = str(datetime.datetime.fromtimestamp(
     timestamp).date()).replace("-", ".")
+
 
 @app.route("/")
 def home():
