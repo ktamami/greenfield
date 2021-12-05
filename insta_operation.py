@@ -51,12 +51,3 @@ class InstaOperation:
 
     def quit(self):
         self.driver.quit()
-
-bot = InstaOperation(driver_path)
-bot.login()
-bot.find_target()
-latest_code = bot.get_latest_post()
-print(latest_code)
-bot.overlay_code(latest_code)
-
-bot.quit()
