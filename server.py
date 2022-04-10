@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request
-import datetime
 import os
-from dotenv import load_dotenv
+import datetime
 import notification_manager
+import insta_operation
 
-load_dotenv()
+notification_manager = notification_manager.NotificationManager()
 
-my_email = os.environ.get("MAIL_FROM")
-password = os.environ.get("PASS")
-address = os.environ.get("MAIL_TO")
-charset = "iso-2022-jp"
+driver_path = '/app/.chromedriver/bin/chromedriver'
+bot = insta_operation.InstaOperation(driver_path)
+bot.login()
+bot.find_target()
+latest_code = bot.get_latest_post()
+bot.overlay_code(latest_code)
+bot.quit()
 
 app = Flask(__name__)
 current_year = datetime.datetime.now().year
