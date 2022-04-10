@@ -2,17 +2,8 @@ from flask import Flask, render_template, request
 import os
 import datetime
 import notification_manager
-import insta_operation
 
 notification_manager = notification_manager.NotificationManager()
-
-driver_path = '/app/.chromedriver/bin/chromedriver'
-bot = insta_operation.InstaOperation(driver_path)
-bot.login()
-bot.find_target()
-latest_code = bot.get_latest_post()
-bot.overlay_code(latest_code)
-bot.quit()
 
 app = Flask(__name__)
 current_year = datetime.datetime.now().year

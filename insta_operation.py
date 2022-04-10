@@ -5,6 +5,7 @@ import time
 from dotenv import load_dotenv
 load_dotenv()
 
+
 driver_path = '/app/.chromedriver/bin/chromedriver'
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
@@ -52,3 +53,9 @@ class InstaOperation:
     def quit(self):
         self.driver.quit()
 
+bot = InstaOperation(driver_path)
+bot.login()
+bot.find_target()
+latest_code = bot.get_latest_post()
+bot.overlay_code(latest_code)
+bot.quit()
