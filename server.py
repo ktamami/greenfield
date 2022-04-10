@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
 import datetime
-import smtplib
-from email.mime.text import MIMEText
-from email.header import Header
 import os
 from dotenv import load_dotenv
+import notification_manager
+
 load_dotenv()
 
 my_email = os.environ.get("MAIL_FROM")
@@ -75,24 +74,9 @@ def completed():
         appointtime = request.form.get("appointtime")
         appointmessage = request.form.get("appointmessage")
 
-        my_msg = MIMEText(f"問合せ時間：　　{today}\n"
-                          f"内容：　　　　　{whatfor}\n"
-                          f"お名前：　　　　{fullname}\n"
-                          f"お電話番号：　　{phonenumber}\n"
-                          f"メールアドレス：{email}\n"
-                          f"問合せメニュー：{treatmentmenu}\n"
-                          f"ご希望日：　　　{appointdate}\n"
-                          f"お時間：　　　　{appointtime}\n"
-                          f"メッセージ：　　{appointmessage}",
-                          "plain", charset)
-        my_msg['Subject'] = Header(
-            f"【{whatfor}】GreenFieldに新規メッセージ({current_date})", charset)
-        with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-            connection.starttls()
-            connection.login(user=my_email, password=password)
-            connection.sendmail(from_addr=my_email,
-                                to_addrs=address, msg=my_msg.as_string())
-
+        text = f"{today}\n{whatfor}\n{fullname}\n{phonenumber}\n" \
+                 f"{email}\n{treatmentmenu}\n{appointdate}\n{appointtime}\n{appointmessage}"
+        notification_manager.send_sms(text)
         return render_template(
             "completed.html",
             current_year=current_year,
