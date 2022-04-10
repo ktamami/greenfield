@@ -23,21 +23,21 @@ class InstaOperation:
 
     def login(self):
         self.driver.get(insta_url)
-        time.sleep(5)
+        time.sleep(2)
         self.driver.find_element_by_name("username").send_keys(insta_id, Keys.TAB, insta_pass, Keys.TAB, Keys.TAB, Keys.ENTER)
-        time.sleep(5)
+        time.sleep(2)
 
     def find_target(self):
         self.driver.get(insta_url + target_account)
-        time.sleep(5)
+        time.sleep(2)
 
     def get_latest_post(self):
         self.driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/div[2]/article/div[1]/div/div[1]/div[1]/a').click()
-        time.sleep(3)
+        time.sleep(2)
         self.driver.find_element_by_xpath('/html/body/div[6]/div[2]/div/article/div/div[2]/div/div[1]/div/div/button').click()
-        time.sleep(3)
+        time.sleep(2)
         self.driver.find_element_by_xpath('/html/body/div[7]/div/div/div/div/button[6]').click()
-        time.sleep(3)
+        time.sleep(2)
         code = self.driver.find_element_by_xpath('/html/body/div[7]/div/div/div/textarea').text
         return code
 
